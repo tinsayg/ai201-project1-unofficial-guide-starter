@@ -81,12 +81,11 @@ at this corpus size.
 
 | # | Question | Expected answer |
 |---|----------|-----------------|
-| 1 | What are affordable off-campus housing options close to Minnesota State University, Mankato? | Highland Hills, The Summit, The Grove, College Station, and College Town |
-| 2 | What do students say about maintenance at Highland Hills? | Poor — staff shows little regard for tenants, maintenance is slow or never comes, management enters apartments unannounced |
+| 1 | What are affordable off-campus housing options close to Minnesota State University, Mankato? | Highland Hills, The Summit|
+| 2 | What do students say about maintenance at Highland Hills? | mixed some say they are happy with the timeliness while others are dissatisfied|
 | 3 | What do students say about cleanliness at The Grove? | Reports of dirty and untidy units on move-in |
-| 4 | What do students say about The Summit's actual units vs the advertised showrooms? | Showrooms look nice but actual units are noisy, poorly insulated, and dirty on move-in — some report broken appliances and rude management |
+| 4 | What do students say about move-in conditions and fees at The Summit? | same conditions as adverstised |
 | 5 | Is College Station Apartments a good option for students near MNSU? | Mixed — some praise responsive maintenance and great management, others report broken appliances on move-in, inconsistent heating, and noise issues |
-| 6 | What do students say about College Town's amenities and management? | Positive reviews for amenities and management responsiveness |
 
 ---
 

@@ -109,17 +109,23 @@ GOOGLE_TIME_AGO = re.compile(
     r"^(a |an )?(few )?\d* ?(year|month|week|day|hour)s? ago$|^a (year|month|week|day) ago$"
 )
 GOOGLE_EDITED_AGO = re.compile(r"^Edited (a |\d+\s*)(year|month|week|day)s?")
-GOOGLE_OWNER = re.compile(r"\(Owner\)|(Business Owner)")
+GOOGLE_OWNER = re.compile(r"\(Owner\)|Business Owner|American Campus Communities|Business owner information")
 GOOGLE_OWNER_BOILERPLATE = re.compile(
-    r"^(Thank you (for|so much)|We (are|appreciate|hope|strive|value|understand|take)|"
+    r"^(Thank you (for|so much)|We (are|appreciate|hope|strive|value|understand|take|'ve)|"
     r"Dear |If you.d like to discuss|Please (feel free|contact|reach out)|"
     r"We('re| are) (sorry|glad|happy|thrilled|disappointed|committed)|"
     r"Your (feedback|review|trust)|We wish you|appreciate the review|"
     r"We look forward|We sincerely|We want to|We would love|"
     r"you changed your mind|It sounds as though|Please reach out|"
-    r"and we (would|can|will) (like|work|help)|Customer Service)",
+    r"and we (would|can|will) (like|work|help)|Customer Service|"
+    r"Thanks for (being|leaving|sharing|your)|There.s nothing better than hearing|"
+    r"We.ve since|Hey [A-Z]|Hi [A-Z]|Dear [A-Z]|Hello [A-Z]|"
+    r"- (Ashley|Rachel|Customer Service)|Customer Service Department|"
+    r"[A-Z][a-z]+, (we strive|we appreciate|we are sorry|we're sorry|thank you for|"
+    r"we understand|please feel free|please reach out|we hope|we want))",
     re.I,
 )
+GOOGLE_EMAIL = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
 GOOGLE_STAR_LINE = re.compile(r"^\d\.\d$")                 # "4.4"
 GOOGLE_REVIEW_COUNT = re.compile(r"^\d+ reviews$")
 # Reviewer name lines: short, title-case words only, no sentence punctuation
@@ -163,6 +169,10 @@ def clean_google(text: str) -> str:
 
         # Skip owner boilerplate that leaked past the state machine
         if GOOGLE_OWNER_BOILERPLATE.match(s):
+            continue
+
+        # Skip lines containing email addresses
+        if GOOGLE_EMAIL.search(s):
             continue
 
         # Skip Yelp-specific noise
